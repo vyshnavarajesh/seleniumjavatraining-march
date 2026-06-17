@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="methods" thread-count="2">
+	<test name="Parallel test run in chrome test">
+		<parameter name="browser" value="chrome-incognito"></parameter>
+		<!-- parameter name="url" value="www.google.com" -->
+
+		<classes>
+			<class name="testNGexamplespkg.TestNGParallelExampleChrome_Safari">
+				<methods>
+					<include name="loginToSauceDemowithInValidDataProvider" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+	<test name="Parallel test run in firefox test">
+		<parameter name="browser" value="firefox"></parameter>
+		<classes>
+			<class name="testNGexamplespkg.TestNGParallelExampleChrome_Safari">
+				<methods>
+					<include name="loginToSauceDemowithDataProvider" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+
+</suite> <!--
+Suite -->
