@@ -49,7 +49,24 @@ public class BaseTest {
 
 			driver = new ChromeDriver(options);
 
-		} else if (browser.equalsIgnoreCase("firefox")) {
+		}else if (browser.equalsIgnoreCase("Chrome-incognito")) {
+			ChromeOptions options = new ChromeOptions();
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			prefs.put("profile.password_manager_leak_detection", false);
+			prefs.put("safebrowsing.enabled", false);
+
+			options.setExperimentalOption("prefs", prefs);
+			options.addArguments("--disable-features=PasswordLeakDetection,SafetyTip,AutofillServerCommunications",
+					"--disable-notifications", "--disable-save-password-bubble", "--disable-infobars", "--headless",
+					"--password-store=basic");
+
+			driver = new ChromeDriver(options);
+
+		}  
+		
+		else if (browser.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
 		} else if(browser.equalsIgnoreCase("safari")){
 			driver = new SafariDriver();
